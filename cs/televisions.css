@@ -1,0 +1,43 @@
+.big_tv {
+    height: 180px;
+    width: 320px;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 8px solid black;
+    border-radius: 8px;
+    background-color: #222222;
+}
+
+.big_tv:hover {
+    box-shadow: 0px 0px 2px 2px #00d2e8;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.small_tv {
+    height: 100px;
+    width: 180px;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 8px solid black;
+    border-radius: 8px;
+    background-color: #222222;
+}
+
+.small_tv:hover {
+    box-shadow: 0px 0px 2px 2px #00d2e8;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tv_text {
+    color: #00d2e8;
+    margin: 2px;
+    font-size: 12px;
+    font-family: Helvetica;
+    text-align: center;
+}

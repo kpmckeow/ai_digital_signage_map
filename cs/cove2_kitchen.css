@@ -1,0 +1,34 @@
+#cove2_kitchen_div {
+    height: 264px;
+    width: 360px;
+    margin: 20px auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(24, 24, 24, 0.6);
+}
+
+#cove2_kitchen_title_text {
+    height: 20px;
+    width: 340px;
+    margin: 10px;
+    display: block;
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+#cove2_kitchen_tv_div {
+    height: 200px;
+    width: 340px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

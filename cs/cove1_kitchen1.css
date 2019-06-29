@@ -1,0 +1,56 @@
+#cove1_kitchen1_div {
+    height: 462px;
+    width: 1074px;
+    margin: 20px auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    background-color: rgba(24, 24, 24, 0.6);
+}
+
+#cove1_kitchen1_title_text {
+    height: 20px;
+    width: 1054px;
+    margin: 10px;
+    display: block;
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+#cove1_kitchen1_lft_div {
+    height: 398px;
+    width: 340px;
+    margin: 10px 5px 10px 10px;
+    display: inline-block;
+    position: relative;
+}
+
+#cove1_kitchen1_rht_div {
+    height: 398px;
+    width: 700px;
+    margin: 10px 10px 10px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+#cove1_kitchen1_tv_row_top {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#cove1_kitchen1_tv_row_bot {
+    height: 203px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

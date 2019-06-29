@@ -1,0 +1,458 @@
+<!--
+==========================================================================================
+AUTHOR: Kelly McKeown
+DATE: 10 JAN 2018
+PROJECT: Digital Signage Map
+------------------------------------------------------------------------------------------
+Description:
+
+    This website is a map of the digital signage used throughout the Cove. The layout of
+    the map is made to mirror the physical layout of the televisions displaying the
+    signage. To access the digital signage web API for a particular raspberry pi, first
+    select the building the pi is located in (Cove 1 or Cove 2). Then select which cluster
+    the pi belongs to, and you will be shown the layout of that cluster. Then simply click
+    on the tv for which you wish to manage the digital signage for, and you will be
+    redirected to the web API. On each tv in the map, the ip address, wall port, IDF port,
+    and hostname of the raspberry pi associated with that tv is shown where applicable.
+==========================================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Signage Map</title>
+
+    <link rel="icon" href="images/uci_ai_icon.png">
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/nav_bars.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="cs/index.css">
+    <link rel="stylesheet" type="text/css" href="cs/televisions.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_kitchen1.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_kitchen2.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_wedge.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_nlab.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_base11_lab.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove1_front_desk.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove2_front_desk.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove2_demo_room.css">
+    <link rel="stylesheet" type="text/css" href="cs/cove2_kitchen.css">
+</head>
+<body>
+    <div class="debug" id="header_div">
+        <div class="debug" id="title_div">
+            <div class="debug" id="watermark_div">
+                <img id="watermark_image" src="images/UCI_Applied_Innovation_White_RGB.jpg">
+            </div>
+            <div class="debug" id="title_text">Digital Signage Map</div>
+        </div>
+
+        <div class="debug" id="building_nav_div">
+            <button class="debug button1" id="cove1_button">Cove 1</button>
+            <button class="debug button1" id="cove2_button">Cove 2</button>
+        </div>
+
+        <div class="debug" id="cluster_nav_div">
+            <!-- Cove 1 Buttons -->
+            <button class="debug button2 cove1_buttons" id="cove1_kitchen1_button"  >Kitchen 1</button>
+            <button class="debug button2 cove1_buttons" id="cove1_kitchen2_button"  >Kitchen 2</button>
+            <button class="debug button2 cove1_buttons" id="cove1_wedge_button"     >Wedge</button>
+            <button class="debug button2 cove1_buttons" id="cove1_nlab_button"      >N-Lab</button>
+            <button class="debug button2 cove1_buttons" id="cove1_base11_lab_button">Base 11 Lab</button>
+            <button class="debug button2 cove1_buttons" id="cove1_front_desk_button">Front Desk</button>
+
+            <!-- Cove 2 Buttons -->
+            <button class="debug button2 cove2_buttons" id="cove2_front_desk_button">Front Desk</button>
+            <button class="debug button2 cove2_buttons" id="cove2_demo_room_button" >Demo Room</button>
+            <button class="debug button2 cove2_buttons" id="cove2_kitchen_button"   >Kitchen</button>
+        </div>
+    </div>
+    <div class="debug" id="content_div">
+
+        <!-- Cove1: Kitchen 1 -->
+        <div class="debug cluster" id="cove1_kitchen1_div">
+            <div class="debug" id="cove1_kitchen1_title_text">Kitchen 1</div>
+            <div class="debug" id="cove1_kitchen1_lft_div">
+                <a href="http://128.195.213.117" target="_blank">
+                    <div class="big_tv" id="cove1_kitchen1_tv_lft_top">
+                        <div class="debug tv_text">128.195.213.117</div>
+                        <div class="debug tv_text">Wall Jack: 127</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-827</div>
+                        <div class="debug tv_text">AI-C1K1-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.118" target="_blank">
+                    <div class="big_tv" id="cove1_kitchen1_tv_lft_bot">
+                        <div class="debug tv_text">128.195.213.118</div>
+                        <div class="debug tv_text">Wall Jack: 127</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-827</div>
+                        <div class="debug tv_text">AI-C1K1-PI01</div>
+                    </div>
+                </a>
+            </div>
+            <div class="debug" id="cove1_kitchen1_rht_div">
+                <div class="debug" id="cove1_kitchen1_tv_row_top">
+                    <a href="http://128.195.213.119" target="_blank">
+                        <div class="small_tv" id="cove1_kitchen1_tv_top_lft">
+                            <div class="debug tv_text">128.195.213.119</div>
+                            <div class="debug tv_text">Wall Jack: 131</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-831</div>
+                            <div class="debug tv_text">AI-C1K1-PI03</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.120" target="_blank">
+                        <div class="small_tv" id="cove1_kitchen1_tv_top_mid">
+                            <div class="debug tv_text">128.195.213.120</div>
+                            <div class="debug tv_text">Wall Jack: 135</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-835</div>
+                            <div class="debug tv_text">AI-C1K1-PI04</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.121" target="_blank">
+                        <div class="small_tv" id="cove1_kitchen1_tv_top_rht">
+                            <div class="debug tv_text">128.195.213.121</div>
+                            <div class="debug tv_text">Wall Jack: 132</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-832</div>
+                            <div class="debug tv_text">AI-C1K1-PI05</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="debug" id="cove1_kitchen1_tv_row_bot">
+                    <a href="http://128.195.213.122" target="_blank">
+                        <div class="big_tv" id="cove1_kitchen1_tv_bot_lft">
+                            <div class="debug tv_text">128.195.213.122</div>
+                            <div class="debug tv_text">Wall Jack: 133</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-833</div>
+                            <div class="debug tv_text">AI-C1K1-PI06</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.123" target="_blank">
+                        <div class="big_tv" id="cove1_kitchen1_tv_bot_rht">
+                            <div class="debug tv_text">128.195.213.123</div>
+                            <div class="debug tv_text">Wall Jack: 134</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-834</div>
+                            <div class="debug tv_text">AI-C1K1-PI07</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cove 1: Kitchen 2 -->
+        <div class="debug cluster" id="cove1_kitchen2_div">
+            <div class="debug" id="cove1_kitchen2_title_text">Kitchen 2</div>
+            <div class="debug" id="cove1_kitchen2_tv_row_top">
+                <a href="http://128.195.213.124" target="_blank">
+                    <div class="small_tv" id="cove1_kitchen2_tv_top_lft">
+                        <div class="debug tv_text">128.195.213.124</div>
+                        <div class="debug tv_text">Wall Jack: 118</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-818</div>
+                        <div class="debug tv_text">AI-C1K2-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.125" target="_blank">
+                    <div class="small_tv" id="cove1_kitchen2_tv_top_mid">
+                        <div class="debug tv_text">128.195.213.125</div>
+                        <div class="debug tv_text">Wall Jack: 122</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-822</div>
+                        <div class="debug tv_text">AI-C1K2-PI02</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.126" target="_blank">
+                    <div class="small_tv" id="cove1_kitchen2_tv_top_rht">
+                        <div class="debug tv_text">128.195.213.126</div>
+                        <div class="debug tv_text">Wall Jack: 123</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-823</div>
+                        <div class="debug tv_text">AI-C1K2-PI03</div>
+                    </div>
+                </a>
+            </div>
+            <div class="debug" id="cove1_kitchen2_tv_row_bot">
+                <a href="http://128.195.213.127" target="_blank">
+                    <div class="big_tv" id="kitchen2_tv_bot_lft">
+                        <div class="debug tv_text">128.195.213.127</div>
+                        <div class="debug tv_text">Wall Jack: 118</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-818</div>
+                        <div class="debug tv_text">AI-C1K2-PI03</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.128" target="_blank">
+                    <div class="big_tv" id="cove1_kitchen2_tv_bot_mid">
+                        <div class="debug tv_text">128.195.213.128</div>
+                        <div class="debug tv_text">Wall Jack: 120</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-820</div>
+                        <div class="debug tv_text">AI-C1K2-PI05</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.1129" target="_blank">
+                    <div class="big_tv" id="cove1_kitchen2_tv_bot_rht">
+                        <div class="debug tv_text">128.195.213.129</div>
+                        <div class="debug tv_text">Wall Jack: 124</div>
+                        <div class="debug tv_text">IDF Port: Rack 4-824</div>
+                        <div class="debug tv_text">AI-C1K2-PI06</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove1: Wedge -->
+        <div class="debug cluster" id="cove1_wedge_div">
+            <!-- Cove1: Wedge Left -->
+            <div class="debug" id="cove1_wedge_lft_div">
+                <div class="debug" id="cove1_wedge_lft_title_text">Wedge Left</div>
+                <div class="debug" id="cove1_wedge_lft_tv_div">
+                    <a href="http://128.195.213.105" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv1">
+                            <div class="debug tv_text">128.195.213.105</div>
+                            <div class="debug tv_text">Wall Jack: 874</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-874</div>
+                            <div class="debug tv_text">AI-C1W-PI01</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.106" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv2">
+                            <div class="debug tv_text">128.195.213.106</div>
+                            <div class="debug tv_text">Wall Jack: 877</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-877</div>
+                            <div class="debug tv_text">AI-C1W-PI02</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.107" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv3">
+                            <div class="debug tv_text">128.195.213.107</div>
+                            <div class="debug tv_text">Wall Jack: 869</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-869</div>
+                            <div class="debug tv_text">AI-C1W-PI03</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.108" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv4">
+                            <div class="debug tv_text">128.195.213.108</div>
+                            <div class="debug tv_text">Wall Jack: 878</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-878</div>
+                            <div class="debug tv_text">AI-C1W-PI04</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.109" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv5">
+                            <div class="debug tv_text">128.195.213.109</div>
+                            <div class="debug tv_text">Wall Jack: 863</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-863</div>
+                            <div class="debug tv_text">AI-C1W-PI05</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.121" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_lft_tv6">
+                            <div class="debug tv_text">128.195.213.121</div>
+                            <div class="debug tv_text">Wall Jack: 132</div>
+                            <div class="debug tv_text">IDF Port: Rack 4-832</div>
+                            <div class="debug tv_text">AI-C1K1-PI05</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cove1: Wedge Right -->
+            <div class="debug" id="cove1_wedge_rht_div">
+                <div class="debug" id="cove1_wedge_rht_title_text">Wedge Right</div>
+                <div class="debug" id="cove1_wedge_rht_tv_div">
+                    <a href="http://128.195.213.111" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv1">
+                            <div class="debug tv_text">128.195.213.111</div>
+                            <div class="debug tv_text">Wall Jack: 209 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI07</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.112" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv2">
+                            <div class="debug tv_text">128.195.213.112</div>
+                            <div class="debug tv_text">Wall Jack: 211 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI08</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.113" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv3">
+                            <div class="debug tv_text">128.195.213.113</div>
+                            <div class="debug tv_text">Wall Jack: 213 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI09</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.114" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv4">
+                            <div class="debug tv_text">128.195.213.114</div>
+                            <div class="debug tv_text">Wall Jack: 210 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI10</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.115" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv5">
+                            <div class="debug tv_text">128.195.213.115</div>
+                            <div class="debug tv_text">Wall Jack: 212 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI11</div>
+                        </div>
+                    </a>
+                    <a href="http://128.195.213.116" target="_blank">
+                        <div class="small_tv" id="cove1_wedge_rht_tv6">
+                            <div class="debug tv_text">128.195.213.116</div>
+                            <div class="debug tv_text">Wall Jack: 214 (UCI)</div>
+                            <div class="debug tv_text">AI-C1W-PI12</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cove 1: Wedge TV -->
+            <div class="debug" id="cove1_wedge_tv_div">
+                <div class="debug" id="cove1_wedge_tv_title_text">Wedge TV</div>
+                <a href="http://128.195.213.156" target="_blank">
+                    <div class="big_tv" id="cove1_wedge_tv">
+                        <div class="debug tv_text">128.195.213.156</div>
+                        <div class="debug tv_text">Wall Jack: 237 (UCI)</div>
+                        <div class="debug tv_text">AI-C1W-PI13</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 1: N-Lab -->
+        <div class="debug cluster" id="cove1_nlab_div">
+            <div class="debug" id="cove1_nlab_title_text">N-lab</div>
+            <div class="debug" id="cove1_nlab_tv_div">
+                <a href="http://128.195.213.103" target="_blank">
+                    <div class="big_tv" id="cove1_nlab_tv_lft">
+                        <div class="debug tv_text">128.195.213.103</div>
+                        <div class="debug tv_text">Wall Jack: 191 (UCI)</div>
+                        <div class="debug tv_text">AI-C1NL-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.104" target="_blank">
+                    <div class="big_tv" id="cove1_nlab_tv_rht">
+                        <div class="debug tv_text">128.195.213.104</div>
+                        <div class="debug tv_text">Wall Jack: 191 (UCI)</div>
+                        <div class="debug tv_text">AI-C1NL-PI02</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 1: Base11 Lab -->
+        <div class="debug cluster" id="cove1_base11_lab_div">
+            <div class="debug" id="cove1_base11_lab_title_text">Base11 Lab</div>
+            <div class="debug" id="cove1_base11_lab_tv_div">
+                <a href="http://128.195.213.158" target="_blank">
+                    <div class="big_tv" id="cove1_base11_lab_tv_lft">
+                        <div class="debug tv_text">128.195.213.158</div>
+                        <div class="debug tv_text">Wall Jack: 004 (UCI)</div>
+                        <div class="debug tv_text">AI-C1B1-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.159" target="_blank">
+                    <div class="big_tv" id="cove1_base11_lab_tv_rht">
+                        <div class="debug tv_text">128.195.213.159</div>
+                        <div class="debug tv_text">Wall Jack: 014 (UCI)</div>
+                        <div class="debug tv_text">AI-C1B1-PI02</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 1: Front Desk -->
+        <div class="debug cluster" id="cove1_front_desk_div">
+            <div class="debug" id="cove1_front_desk_title_text">Front Desk</div>
+            <div class="debug" id="cove1_front_desk_tv_div">
+                <a href="http://128.195.213.101" target="_blank">
+                    <div class="big_tv" id="cove1_front_desk_tv_lft">
+                        <div class="debug tv_text">128.195.213.101</div>
+                        <div class="debug tv_text">AI-C1FD-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.102" target="_blank">
+                    <div class="big_tv" id="cove1_front_desk_tv_rht">
+                        <div class="debug tv_text">128.195.213.102</div>
+                        <div class="debug tv_text">AI-C1FD-PI02</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 2: Front Desk -->
+        <div class="debug cluster" id="cove2_front_desk_div">
+            <div class="debug" id="cove2_front_desk_title_text">Front Desk</div>
+            <div class="debug" id="cove2_front_desk_tv_div">
+                <a href="http://128.195.213.130" target="_blank">
+                    <div class="big_tv" id="cove2_front_desk_tv_lft">
+                        <div class="debug tv_text">128.195.213.130</div>
+                        <div class="debug tv_text">Wall Jack: 157 (UCI)</div>
+                        <div class="debug tv_text">AI-C2FD-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.131" target="_blank">
+                    <div class="big_tv" id="cove2_front_desk_tv_rht">
+                        <div class="debug tv_text">128.195.213.131</div>
+                        <div class="debug tv_text">Wall Jack: 159 (UCI)</div>
+                        <div class="debug tv_text">AI-C2FD-PI02</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 2: Demo Room -->
+        <div class="debug cluster" id="cove2_demo_room_div">
+            <div class="debug" id="cove2_demo_room_title_text">Demo Room</div>
+            <div class="debug" id="cove2_demo_room_tv_div">
+                <a href="http://128.195.213.130" target="_blank">
+                    <div class="big_tv" id="cove2_demo_room_tv_top_lft">
+                        <div class="debug tv_text">128.195.213.133</div>
+                        <div class="debug tv_text">Wall Jack: 174 (UCI)</div>
+                        <div class="debug tv_text">AI-C2D-PI01</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.131" target="_blank">
+                    <div class="big_tv" id="cove2_demo_room_tv_top_rht">
+                        <div class="debug tv_text">128.195.213.132</div>
+                        <div class="debug tv_text">Wall Jack: 176 (UCI)</div>
+                        <div class="debug tv_text">AI-C2D-PI02</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.131" target="_blank">
+                    <div class="big_tv" id="cove2_demo_room_tv_bot_lft">
+                        <div class="debug tv_text">128.195.213.135</div>
+                        <div class="debug tv_text">Wall Jack: 166 (UCI)</div>
+                        <div class="debug tv_text">AI-C2D-PI03</div>
+                    </div>
+                </a>
+                <a href="http://128.195.213.131" target="_blank">
+                    <div class="big_tv" id="cove2_demo_room_tv_bot_rht">
+                        <div class="debug tv_text">128.195.213.134</div>
+                        <div class="debug tv_text">Wall Jack: 164 (UCI)</div>
+                        <div class="debug tv_text">AI-C2D-PI04</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cove 2: Kitchen-->
+        <div class="debug cluster" id="cove2_kitchen_div">
+            <div class="debug" id="cove2_kitchen_title_text">Kitchen</div>
+            <div class="debug" id="cove2_kitchen_tv_div">
+                <a href="http://128.195.213.157" target="_blank">
+                    <div class="big_tv" id="cove2_kitchen_tv_lft">
+                        <div class="debug tv_text">128.195.213.157</div>
+                        <div class="debug tv_text">Wall Jack: 175 (UCI)</div>
+                        <div class="debug tv_text">AI-C2K-PI01</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="debug" id="footer_div">Designed and developed by Kelly McKeown 2018 | For use by UCI Applied Innovation</div>
+
+    <script type="text/javascript">initPage()</script>
+</body>
+</html>
